@@ -1,62 +1,87 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import profileIcon from '../images/profileIcon.svg';
-import searchIcon from '../images/searchIcon.svg';
-import iconeRecipes from '../images/iconeRecipes.svg';
-import SearchBar from './SearchBar';
+import RecipesContext from '../context/RecipesContext';
 
-function Header({ title }) {
+function SearchBar() {
   const history = useHistory();
-  const [searchRender, setSearchRender] = useState(false);
-  const { pathname } = history.location;
+  const { handleSearch } = useContext(RecipesContext);
+  const [formData, setFormData] = useState({ searchInput: '', searchRadio: 'ingredient' });
+
+  const handleClick = () => {
+    const { searchInput, searchRadio } = formData;
+  
+    if (searchRadio === 'first-letter' && searchInput.length > 1) {
+      return window.alert('Your search must have only 1 (one) character');
+    }
+    return searchInput.length === 0
+      ? window.alert('Your search must have at least 1 (one) character')
+      : handleSearch({ searchInput, searchRadio, path: history.location.pathname });
+  };  
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
 
   return (
-    <main>
-      <section className="header">
-        <img
-          alt="icone recipes"
-          className="icone-recipes"
-          src={ iconeRecipes }
+    <div>
+      <div>
+        <input
+          type="text"
+          name="searchInput"
+          id="search-input"
+          data-testid="search-input"
+          placeholder="Search"
+          value={formData.searchInput}
+          onChange={handleChange}
         />
-        <h1 className="title-food">{title}</h1>
-        {['/profile', '/done-recipes', '/favorite-recipes'].includes(pathname) ? (
+        <div />
+        <label htmlFor="ingredient-search">
           <input
-            alt="profile"
-            className="input-profile"
-            onClick={() => history.push('/profile')}
-            type="image"
-            src={ profileIcon }
+            type="radio"
+            name="searchRadio"
+            id="ingredient-search"
+            data-testid="ingredient-search-radio"
+            value="ingredient"
+            checked={formData.searchRadio === 'ingredient'}
+            onChange={handleChange}
           />
-        ) : (
-          <section className="container-inputs">
-            <input
-              alt="profile-top-btn"
-              className="input-profile"
-              onClick={() => history.push('./profile')}
-              type="image"
-              src={ profileIcon }
-            />
-            <input
-              alt="search-top-btn"
-              className="input-search"
-              onClick={() => setSearchRender(prevState => !prevState)}
-              type="image"
-              src={ searchIcon }
-            />
-          </section>
-        )}
-      </section>
-      {
-        searchRender && <SearchBar pageTitle={ title } />
-      }
-    </main>
+          Ingredient
+        </label>
+        <label htmlFor="name-search">
+          <input
+            type="radio"
+            name="searchRadio"
+            id="name-search"
+            data-testid="name-search-radio"
+            value="name"
+            checked={formData.searchRadio === 'name'}
+            onChange={handleChange}
+          />
+          Name
+        </label>
+        <label htmlFor="first-letter-search">
+          <input
+            type="radio"
+            name="searchRadio"
+            id="first-letter-search"
+            data-testid="first-letter-search-radio"
+            value="first-letter"
+            checked={formData.searchRadio === 'first-letter'}
+            onChange={handleChange}
+          />
+          First Letter
+        </label>
+        <button
+          type="button"
+          data-testid="exec-search-btn"
+          onClick={handleClick}
+        >
+          Search
+        </button>
+      </div>
+    </div>
   );
 }
 
-Header.propTypes = {
-  title: PropTypes.string.isRequired,
-};
-
-export default Header;
-
+export default SearchBar;

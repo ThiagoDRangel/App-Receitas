@@ -1,7 +1,15 @@
+import React from 'react';
+import { Route, Switch } from 'react-router-dom';
+import Login from './pages/Login';
+import RecipesProvider from './context/RecipesProvider';
 
 function App() {
   return (
-    <h1>Hello World!</h1>
+    <Switch>
+      <RecipesProvider>
+        <Route exact path="/" component={ Login } />
+      </RecipesProvider>
+    </Switch>
   );
 }
 

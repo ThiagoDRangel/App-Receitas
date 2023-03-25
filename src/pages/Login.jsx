@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { saveLocalStorage } from '../helpers/saveLocalStorage';
-import blackHeart from '../images/blackHeartIcon.svg';
 import logo from '../images/logo.svg';
+import '../styles/Login.css';
 
 function Login() {
   const history = useHistory();
@@ -34,44 +34,41 @@ function Login() {
   
   return (
     <main className="login">
-      <h1> Em <span>Construção...</span></h1>
-      <img 
-        alt="imagem de plano de funco"
-        className="loginBackground"
-        src={ blackHeart }
-      />
-      <img
-        alt="logo do app"
-        className="logoImage"
-        src={ logo }
-      />
-      <h1>Login</h1>
-      <input
-        autoComplete="off"
-        className="input-login"
-        onChange={ handleChange }
-        placeholder="Digite seu e-mail"
-        name="email"
-        type="text"
-        value={ email }
-      />
-      <input
-        autoComplete="off"
-        className="input-login"
-        onChange={ handleChange }
-        placeholder="Digite a sua senha"
-        name="password"
-        type="password"
-        value={ password }
-      />
-      <button
-        className="button"
-        disabled={ !disable }
-        onClick={ handleButtonClick }
-        type="button"
-      >
-        Login
-      </button>
+      <section className="main-content">
+        <h1> Em <span>Construção...</span></h1>
+        <img
+          alt="logo do app"
+          className="logoImage"
+          src={ logo }
+        />
+        <h1>Login</h1>
+        <input
+          autoComplete="off"
+          className="input-login"
+          onChange={ handleChange }
+          placeholder="Digite seu e-mail"
+          name="email"
+          type="text"
+          value={ email }
+        />
+        <input
+          autoComplete="off"
+          className="input-login"
+          onChange={ handleChange }
+          placeholder="Digite a sua senha"
+          name="password"
+          type="password"
+          value={ password }
+        />
+        <button
+          className="button"
+          disabled={ !disable }
+          onClick={ handleButtonClick }
+          type="button"
+        >
+          Login
+        </button>
+      </section>
     </main>
   );
 }

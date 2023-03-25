@@ -1,0 +1,106 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+::placeholder {
+  text-align: center;
+}
+
+main {
+  background: url('../images/fundoreceitas.svg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.main-content {
+  align-items: center;
+  background-color: rgb(46, 66, 126);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  padding: 50px;
+}
+
+.login {
+  background-color: white;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  padding: 50px;
+}
+
+.logoImage {
+  width: 300px;
+  margin-bottom: 40px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+h1 {
+  font-size: 36px;
+  margin-bottom: 24px;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.input-login {
+  width: 300px;
+  padding: 16px 24px;
+  margin-bottom: 16px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  color: #1B1B1B;
+}
+
+.button {
+  background-color: #6fd198;
+  color: #fff;
+  padding: 16px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.button:hover {
+  background-color: #fff;
+  color: #EF233C;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.button:disabled {
+  cursor: wait;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding: 10px;
+  }
+  .login {
+    height: auto;
+    padding: 10px;
+  }
+  .logoImage {
+    width: 150px;
+  }
+  h1 {
+    font-size: 24px;
+  }
+  .input-login {
+    width: 250px;
+  }
+  .button {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+}

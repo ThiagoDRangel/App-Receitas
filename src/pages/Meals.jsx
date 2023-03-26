@@ -3,6 +3,7 @@ import RecipesContext from '../context/RecipesContext';
 import Header from '../components/Header';
 import Recipes from '../components/Recipes';
 import Footer from '../components/Footer';
+import Filters from '../components/Filters';
 import { allMealsFetch } from '../services/fetchAPI';
 
 function Meals() {
@@ -25,6 +26,7 @@ function Meals() {
   return (
     <section>
       <Header title="Meals" />
+      <Filters title="Meals" />
       <Recipes />
       <Footer />
     </section>

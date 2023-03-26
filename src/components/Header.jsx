@@ -1,66 +1,69 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
-import profileIcon from '../images/profileIcon.svg';
-import searchIcon from '../images/searchIcon.svg';
-import iconeRecipes from '../images/iconeRecipes.svg';
+import iconProfile from '../images/profileIcon.svg';
+import iconSearch from '../images/searchIcon.svg';
 import SearchBar from './SearchBar';
+import '../styles/Header.css';
+import iconeRecipes from '../images/iconeRecipes.svg';
 
-function Header({ title }) {
+export default function Header({ title }) {
   const history = useHistory();
   const [searchRender, setSearchRender] = useState(false);
   const { pathname } = history.location;
-  const isProfilePath = ['/profile', '/done-recipes', '/favorite-recipes'].includes(pathname);
-
-  function goToProfile() {
-    history.push('/profile');
-  }
+  const isProfilePage = ['/profile', '/done-recipes', '/favorite-recipes'].includes(pathname);
 
   return (
-    <main>
-      <section className="header">
+    <div>
+      <div className="container-header">
         <img
           alt="iconeRecipes"
-          className="iconeRecipes"
+          className="icone-recipes"
           src={ iconeRecipes }
         />
         <h1 className="title-food">{title}</h1>
-        {isProfilePath ? (
-          <input
-            alt="profile"
-            className="input-profile"
-            onClick={goToProfile}
-            type="image"
-            src={ profileIcon }
-          />
-        ) : (
-          <section className="container-input">
+
+        { isProfilePage
+          ? (
             <input
-              alt="profile-top-btn"
               className="input-profile"
-              onClick={goToProfile}
               type="image"
-              src={profileIcon}
-            />
-            <input
-              alt="search-top-btn"
-              className="input-search"
-              onClick={() => setSearchRender(!searchRender)}
-              type="image"
-              src={searchIcon}
-            />
-          </section>
-        )}
-      </section>
+              src={ iconProfile }
+              data-testid="profile-top-btn"
+              onClick={ () => history.push('/profile') }
+              alt="profile"
+            />)
+          : (
+            <div
+              className="container-inputs"
+            >
+              <input
+                className="input-profile"
+                type="image"
+                src={ iconProfile }
+                data-testid="profile-top-btn"
+                onClick={ () => history.push('/profile') }
+                alt="profile-top-btn"
+              />
+              <input
+                className="input-search"
+                type="image"
+                src={ iconSearch }
+                data-testid="search-top-btn"
+                onClick={ () => (
+                  searchRender ? setSearchRender(false) : setSearchRender(true)
+                ) }
+                alt="search-top-btn"
+              />
+            </div>)}
+      </div>
       {
         searchRender && <SearchBar pageTitle={ title } />
       }
-    </main>
+    </div>
   );
 }
 
 Header.propTypes = {
-  title: PropTypes.string.isRequired,
-};
-
-export default Header;
+  title: PropTypes.string,
+}.isRequired;

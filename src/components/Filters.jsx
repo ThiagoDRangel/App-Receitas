@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
-//import '../styles/Filters.css';
+import '../styles/Filters.css';
 import {
   categoriesDrinksFetch,
   categoriesMealsFetch,

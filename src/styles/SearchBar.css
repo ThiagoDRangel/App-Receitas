@@ -1,0 +1,31 @@
+.searchbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.searchbarradio {
+  margin: 0 15px 0 2px;
+}
+
+.searchbarbutton {
+  background: linear-gradient(0deg, rgb(131, 56, 6) 0%, rgb(12, 180, 32) 100%);
+  border: none;
+  border-radius: 7px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1), 7px 7px 20px 0 rgba(0, 0, 0, 0.1), inset 2px 2px 2px rgba(255, 255, 255, 0.5);
+  color: white;
+  cursor: pointer;
+  height: 40px;
+  width: 50%;
+  padding: 10px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.searchbarbutton:hover {
+  background: linear-gradient(0deg, rgba(0, 3, 255, 1) 0%, rgba(2, 126, 251, 1) 100%);
+}

@@ -1,0 +1,78 @@
+.container-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #37ba37;
+  height: 8vh;
+  padding: 0 20px;
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
+}
+
+.icone-recipes {
+  width: 45px;
+}
+
+.title-food {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 0 10px;
+}
+
+.right-section {
+  display: flex;
+  align-items: center;
+}
+
+.container-inputs {
+  display: flex;
+  gap: 9px;
+}
+
+.input-profile,
+.input-search {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.input-profile:focus,
+.input-search:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.btn-copy {
+  margin-left: 10px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #e67e22;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-copy:hover {
+  background-color: #d35400;
+}
+
+.icone-recipes:hover {
+  transform: scale(1.1);
+  transition: all 0.3s ease;
+}
+
+.title-food:hover {
+  color: #e67e22;
+  transition: all 0.3s ease;
+}

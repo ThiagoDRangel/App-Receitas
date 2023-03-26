@@ -1,87 +1,138 @@
-import React, { useContext, useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import {
+  ingredientMealsFetch, ingredientDrinksFetch,
+  letterMealsFetch, letterDrinksFetch,
+  nameMealsFetch, nameDrinksFetch,
+} from '../services/fetchAPI';
 import RecipesContext from '../context/RecipesContext';
+import '../styles/SearchBar.css';
 
-function SearchBar() {
+export default function SearchBar(pageTitle) {
+  const [filter, setFilter] = useState('');
+  const [search, setSearch] = useState('');
+  const { setRecipes } = useContext(RecipesContext);
   const history = useHistory();
-  const { handleSearch } = useContext(RecipesContext);
-  const [formData, setFormData] = useState({ searchInput: '', searchRadio: 'ingredient' });
+  const ALERT = 'Your search must have only 1 (one) character';
 
-  const handleClick = () => {
-    const { searchInput, searchRadio } = formData;
-  
-    if (searchRadio === 'first-letter' && searchInput.length > 1) {
-      return window.alert('Your search must have only 1 (one) character');
+  const apiMealHandler = async (apiConst) => {
+    if (apiConst.meals?.length === 1) {
+      history.push(`/meals/${apiConst.meals[0].idMeal}`);
+    } else if (apiConst.meals === null) {
+      global.alert(
+        'Sorry, we haven\'t found any recipes for these filters.',
+      );
+    } else setRecipes(apiConst);
+  };
+
+  const apiDrinkHandler = async (apiConst) => {
+    if (apiConst.drinks?.length === 1) {
+      history.push(`/drinks/${apiConst.drinks[0].idDrink}`);
+    } else if (apiConst.drinks === null) {
+      global.alert(
+        'Sorry, we haven\'t found any recipes for these filters.',
+      );
+    } else setRecipes(apiConst);
+  };
+
+  const filterMealHandler = async (inputFilter, inputSearch) => {
+    if (inputFilter === 'letter') {
+      if (search.length > 1) return global.alert(ALERT);
+      const letterMeals = await letterMealsFetch(inputSearch);
+      apiMealHandler(letterMeals);
+    } else if (inputFilter === 'ingredient') {
+      const ingredientMeals = await ingredientMealsFetch(inputSearch);
+      apiMealHandler(ingredientMeals);
+    } else {
+      const nameMeals = await nameMealsFetch(inputSearch);
+      apiMealHandler(nameMeals);
     }
-    return searchInput.length === 0
-      ? window.alert('Your search must have at least 1 (one) character')
-      : handleSearch({ searchInput, searchRadio, path: history.location.pathname });
-  };  
+  };
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  const filterDrinkHandler = async (inputFilter, inputSearch) => {
+    if (inputFilter === 'letter') {
+      if (search.length > 1) return global.alert(ALERT);
+      const letterDrinks = await letterDrinksFetch(inputSearch);
+      apiDrinkHandler(letterDrinks);
+    } else if (inputFilter === 'ingredient') {
+      const ingredientDrinks = await ingredientDrinksFetch(inputSearch);
+      apiDrinkHandler(ingredientDrinks);
+    } else {
+      const nameDrinks = await nameDrinksFetch(inputSearch);
+      apiDrinkHandler(nameDrinks);
+    }
+  };
+
+  const searchHandler = async (inputFilter, inputSearch, page) => {
+    if (page.pageTitle === 'Meals') {
+      filterMealHandler(inputFilter, inputSearch);
+    } else if (page.pageTitle === 'Drinks') {
+      filterDrinkHandler(inputFilter, inputSearch);
+    }
   };
 
   return (
-    <div>
+    <div className="searchbar">
+      <input
+        type="text"
+        data-testid="search-input"
+        placeholder="Pesquise uma receita"
+        value={ search }
+        onChange={ ({ target }) => setSearch(target.value) }
+      />
       <div>
-        <input
-          type="text"
-          name="searchInput"
-          id="search-input"
-          data-testid="search-input"
-          placeholder="Search"
-          value={formData.searchInput}
-          onChange={handleChange}
-        />
-        <div />
-        <label htmlFor="ingredient-search">
+        <label
+          htmlFor="ingredient-search-radio"
+        >
           <input
+            className="searchbarradio"
+            name="radio"
             type="radio"
-            name="searchRadio"
-            id="ingredient-search"
             data-testid="ingredient-search-radio"
+            id="ingredient-search-radio"
             value="ingredient"
-            checked={formData.searchRadio === 'ingredient'}
-            onChange={handleChange}
+            onChange={ ({ target }) => setFilter(target.value) }
           />
           Ingredient
         </label>
-        <label htmlFor="name-search">
+
+        <label
+          htmlFor="name-search-radio"
+        >
           <input
+            className="searchbarradio"
+            name="radio"
             type="radio"
-            name="searchRadio"
-            id="name-search"
             data-testid="name-search-radio"
+            id="name-search-radio"
             value="name"
-            checked={formData.searchRadio === 'name'}
-            onChange={handleChange}
+            onChange={ ({ target }) => setFilter(target.value) }
           />
           Name
         </label>
-        <label htmlFor="first-letter-search">
-          <input
-            type="radio"
-            name="searchRadio"
-            id="first-letter-search"
-            data-testid="first-letter-search-radio"
-            value="first-letter"
-            checked={formData.searchRadio === 'first-letter'}
-            onChange={handleChange}
-          />
-          First Letter
-        </label>
-        <button
-          type="button"
-          data-testid="exec-search-btn"
-          onClick={handleClick}
+
+        <label
+          htmlFor="first-letter-search-radio"
         >
-          Search
-        </button>
+          <input
+            className="searchbarradio"
+            name="radio"
+            type="radio"
+            data-testid="first-letter-search-radio"
+            id="first-letter-search-radio"
+            value="letter"
+            onChange={ ({ target }) => setFilter(target.value) }
+          />
+          First letter
+        </label>
       </div>
+      <input
+        type="button"
+        className="searchbarbutton"
+        data-testid="exec-search-btn"
+        value="Search"
+        onClick={ () => searchHandler(filter, search, pageTitle) }
+      />
     </div>
   );
 }
-
-export default SearchBar;

@@ -1,0 +1,26 @@
+.containerFilters {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.buttonFilters {
+  background: linear-gradient(0deg, rgb(12, 89, 190) 0%, rgb(107, 12, 180) 100%);
+  border: none;
+  border-radius: 7px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1), 7px 7px 20px 0 rgba(0, 0, 0, 0.1), inset 2px 2px 2px rgba(255, 255, 255, 0.5);
+  color: white;
+  cursor: pointer;
+  height: 40px;
+  width: 100%;
+  outline: none;
+  padding: 10px;
+  transition: all 0.3s ease;
+}
+
+.buttonFilters:hover {
+  background: linear-gradient(0deg, rgba(0, 3, 255, 1) 0%, rgba(2, 126, 251, 1) 100%);
+}

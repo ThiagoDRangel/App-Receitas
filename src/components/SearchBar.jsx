@@ -6,7 +6,7 @@ import {
   nameMealsFetch, nameDrinksFetch,
 } from '../services/fetchAPI';
 import RecipesContext from '../context/RecipesContext';
-// import '../styles/SearchBar.css';
+import '../styles/SearchBar.css';
 
 export default function SearchBar(pageTitle) {
   const [filter, setFilter] = useState('');

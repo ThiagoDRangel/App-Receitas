@@ -5,6 +5,7 @@ import Recipes from '../components/Recipes';
 import Footer from '../components/Footer';
 import Filters from '../components/Filters';
 import { allMealsFetch } from '../services/fetchAPI';
+import '../styles/Meals.css';
 
 function Meals() {
   const { setRecipes } = useContext(RecipesContext);
@@ -27,7 +28,9 @@ function Meals() {
     <section>
       <Header title="Meals" />
       <Filters title="Meals" />
-      <Recipes />
+      <section className="container-meals">
+        <Recipes />
+      </section>
       <Footer />
     </section>
   );

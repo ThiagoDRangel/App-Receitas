@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { getLocalStorage } from '../helpers/saveLocalStorage';
-// import '../styles/Profile.css';
+import '../styles/Profile.css';
 
 export default function Profile() {
   const history = useHistory();
@@ -23,35 +23,25 @@ export default function Profile() {
 
   return (
     <div className="profile">
-      <Header
-        title="Profile"
-      />
-      <p
-        className="profileuser"
-        data-testid="profile-email"
-      >
-        {email}
-      </p>
-      <div className="profilebuttons">
+      <Header title="Profile" />
+      <p className="profile-user">{email}</p>
+      <div className="profile-btn">
         <button
-          className="buttonFilters"
-          data-testid="profile-done-btn"
+          className="filters"
           type="button"
           onClick={ () => history.push('/done-recipes') }
         >
           Done Recipes
         </button>
         <button
-          className="buttonFilters"
-          data-testid="profile-favorite-btn"
+          className="filters"
           type="button"
           onClick={ () => history.push('/favorite-recipes') }
         >
           Favorite Recipes
         </button>
         <button
-          className="buttonFilters"
-          data-testid="profile-logout-btn"
+          className="filters"
           type="button"
           onClick={ () => userLogout() }
         >

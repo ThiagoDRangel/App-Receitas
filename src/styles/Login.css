@@ -21,7 +21,7 @@ main {
   border-radius: 15px;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 75vh;
   justify-content: center;
   padding: 50px;
 }
@@ -85,6 +85,8 @@ h1 {
 @media (max-width: 768px) {
   .main-content {
     padding: 10px;
+    height: 80vh;
+    width: 94vw;
   }
   .login {
     height: auto;
@@ -97,7 +99,32 @@ h1 {
     font-size: 24px;
   }
   .input-login {
-    width: 250px;
+    width: 200px;
+  }
+  .button {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 280px) {
+  .main-content {
+    padding: 5px;
+    height: 70vh;
+    width: 94vw;
+  }
+  .login {
+    height: auto;
+    padding: 10px;
+  }
+  .logoImage {
+    width: 120px;
+  }
+  h1 {
+    font-size: 24px;
+  }
+  .input-login {
+    width: 200px;
   }
   .button {
     padding: 12px 20px;

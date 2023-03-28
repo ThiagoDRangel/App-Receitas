@@ -1,57 +1,33 @@
-const fetchData = async (url) => {
-  try {
-    const response = await fetch(url);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error(error);
-    return undefined;
-  }
-};
+// Fetch para COMIDAS
+export const ingredientMealsFetch = async (ingredient) => fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`).then((d) => d.json()).then((r) => r).catch(() => global.alert(''));
 
-export const ingredientMealsFetch = (ingredient) =>
-  fetchData(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`);
+export const nameMealsFetch = async (name) => fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`).then((d) => d.json()).then((r) => r).catch(() => global.alert(''));
 
-export const nameMealsFetch = (name) =>
-  fetchData(`https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`);
+export const letterMealsFetch = async (letter) => fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${letter}`).then((d) => d.json()).then((r) => r).catch(() => global.alert('Your search must have only 1 (one) character'));
 
-export const letterMealsFetch = (letter) =>
-  fetchData(`https://www.themealdb.com/api/json/v1/1/search.php?f=${letter}`).catch(() => {
-    console.error("Your search must have only 1 (one) character");
-    return undefined;
-  });
+export const allMealsFetch = async () => fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=').then((d) => d.json()).then((r) => r).catch(() => global.alert(''));
 
-export const allMealsFetch = () =>
-  fetchData(`https://www.themealdb.com/api/json/v1/1/search.php?s=`);
+export const categoriesMealsFetch = async () => fetch('https://www.themealdb.com/api/json/v1/1/list.php?c=list').then((d) => d.json()).then((r) => r.meals);
 
-export const categoriesMealsFetch = () =>
-  fetchData(`https://www.themealdb.com/api/json/v1/1/list.php?c=list`).then((data) => data.meals);
+export const categoryMealsFetch = async (category) => fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`).then((d) => d.json()).then((r) => r);
 
-export const categoryMealsFetch = (category) =>
-  fetchData(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`);
+export const idMealFetch = async (id) => fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`).then((d) => d.json()).then((r) => r);
+// Fetch para BEBIDAS
+export const ingredientDrinksFetch = async (ingredient) => fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`).then((d) => d.json()).then((r) => r).catch(() => global.alert(''));
 
-export const idMealFetch = (id) =>
-  fetchData(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
-  
-  export const ingredientDrinksFetch = (ingredient) =>
-    fetchData(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`);
-  
-  export const nameDrinksFetch = (name) =>
-    fetchData(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`);
-  
-  export const letterDrinksFetch = (letter) =>
-    fetchData(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`).catch(() => {
-      console.error("Your search must have only 1 (one) character");
-      return undefined;
-    });
-  
-  export const allDrinksFetch = () =>
-    fetchData(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=`);
-  
-  export const categoriesDrinksFetch = () =>
-    fetchData(`https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list`).then((data) => data.drinks);
-  
-  export const categoryDrinksFetch = (category) =>
-    fetchData(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`);
-  
-  
+export const nameDrinksFetch = async (name) => fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`).then((d) => d.json()).then((r) => r).catch(() => global.alert(''));
+
+export const letterDrinksFetch = async (letter) => fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`).then((d) => d.json()).then((r) => r).catch(() => global.alert('Your search must have only 1 (one) character'));
+
+export const allDrinksFetch = async () => fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=').then((d) => d.json()).then((r) => r).catch(() => global.alert(''));
+
+export const categoriesDrinksFetch = async () => fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list').then((d) => d.json()).then((r) => r.drinks);
+
+export const categoryDrinksFetch = async (category) => fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`).then((d) => d.json()).then((r) => r);
+
+export const idDrinkFetch = async (id) => fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`).then((d) => d.json()).then((r) => r);
+// const fetch async () =>{
+//   const response = await fetch('url');
+//   const data = await response.json()
+//   return data
+// }

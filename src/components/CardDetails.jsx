@@ -8,7 +8,19 @@ import blackHeart from '../images/blackHeartIcon.svg';
 import shareIcon from '../images/shareIcon.svg';
 
 function CardDetails(recipeId) {
-  console.log(recipeId);
+  const { params: { category, ingredient,
+    instruction, measure, title, thumb, video,
+  } } = recipeId;
+  const { dataDetails } = useContext(RecipesContext);
+  const [startedRecipe, setStartedRecipe] = useState(false);
+  const [urlCopied, setUrlCopied] = useState(false);
+  const [favorited, setFavorited] = useState(whiteHeart);
+  const history = useHistory();
+  const { pathname } = history.location;
+  console.log(pathname);
+  const idRecipe = pathname.split('/').pop();
+  console.log(idRecipe);
+
   return (
     <main>Olá</main>
   );

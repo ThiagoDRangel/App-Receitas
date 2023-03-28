@@ -18,14 +18,14 @@ function App() {
         <Route
           exact
           path="/meals/:id"
-          component={ RecipeDetails }
-          // render={ (props) => <RecipeDetails { ...props } /> }
+          //component={ RecipeDetails }
+          render={ (props) => <RecipeDetails { ...props } /> }
         />
         <Route
           exact
           path="/drinks/:id"
-          component={ RecipeDetails }
-          // render={ (props) => <RecipeDetails { ...props } /> }
+          //component={ RecipeDetails }
+          render={ (props) => <RecipeDetails { ...props } /> }
         />
       </RecipesProvider>
     </Switch>

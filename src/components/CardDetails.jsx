@@ -16,12 +16,12 @@ function CardDetails(recipeId) {
   const [startedRecipe, setStartedRecipe] = useState(false);
   const [urlCopied, setUrlCopied] = useState(false);
   const [favorited, setFavorited] = useState(whiteHeart);
+  const [you, setYou] = useState(video);
   const history = useHistory();
   const { pathname } = history.location;
   const SECONDS_TIMEOUT = 2000;
   const DRINK_REGEX = /drinks/;
   const URL = window.location.href;
-  console.log(URL);
   const idSplit = pathname.split('/').pop();
 
   const setRecipeStorage = () => {
@@ -35,6 +35,8 @@ function CardDetails(recipeId) {
 
   useEffect(() => {
     const inProgress = getLocalStorage('inProgressRecipes');
+    const embedLink = video.replace('watch?v=', 'embed/');
+    setYou(embedLink);
   
     if (!inProgress) {
       return;
@@ -49,7 +51,7 @@ function CardDetails(recipeId) {
     } else {
       setStartedRecipe(false);
     }
-  }, [idSplit]);
+  }, [idSplit, video]);
 
   useEffect(() => {
     const favoriteStorage = getLocalStorage('favoriteRecipes');
@@ -139,9 +141,9 @@ function CardDetails(recipeId) {
           title="video"
           width="420"
           height="345"
-          src={video}
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          loading="lazy"
+          src={ you }
+          allow="autoplay; encrypted-media"
+          allowFullScreen
         />
         <button
           className="button-start"

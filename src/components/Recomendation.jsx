@@ -8,7 +8,6 @@ function Recomendation({ path }) {
 
   useEffect(() => {
     const checkPath = async () => {
-    console.log(path);
       if (path === '/meals/:id') {
         setResultData((await allMealsFetch()).meals);
       } else if (path === '/drinks/:id') {

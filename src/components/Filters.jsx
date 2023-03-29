@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
+import RecipesContext from '../context/RecipesContext';
 import '../styles/Filters.css';
 import {
   categoriesDrinksFetch,
@@ -9,48 +10,43 @@ import {
   allMealsFetch,
   allDrinksFetch,
 } from '../services/fetchAPI';
-import RecipesContext from '../context/RecipesContext';
 
-export default function Filters({ title }) {
+function Filters({ title }) {
   const [fetchCategories, setFetchCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const [toggleCategory, setToggleCategory] = useState(false);
   const { setRecipes } = useContext(RecipesContext);
-  const MAX_FILTERS = 5;
+  const MAX_FILTERS = 4;
 
-  const fetchCategoriesByTitle = async () => {
-    try {
-      const fetchFunction = title === 'Meals' ? categoriesMealsFetch : categoriesDrinksFetch;
-      const response = await fetchFunction();
-      setFetchCategories(response.slice(0, MAX_FILTERS));
-    } catch (error) {
-      console.error('Error fetching categories:', error);
-    }
-  };
-  
   useEffect(() => {
-    fetchCategoriesByTitle();
-  }, []);
-  
+    const categoriesMap = async () => {
+      const response =
+        title === 'Meals' ? await categoriesMealsFetch() : await categoriesDrinksFetch();
+      const data = response.slice(0, MAX_FILTERS);
+      setFetchCategories(data);
+    };
 
-  const clearFilters = async () => {
-    const fetchFunction = title === 'Meals' ? allMealsFetch : allDrinksFetch;
-    const response = await fetchFunction();
+    categoriesMap();
+  }, [title]);
+
+  const clearAllFilters = async () => {
+    const response =
+      title === 'Meals' ? await allMealsFetch() : await allDrinksFetch();
     setRecipes(response);
   };
 
-  const filterByCategory = async (category) => {
-    const fetchFunction = title === 'Meals' ? categoryMealsFetch : categoryDrinksFetch;
-    const response = await fetchFunction(category);
+  const filterByCategory = async (param) => {
+    setToggleCategory(param);
+    const response =
+      title === 'Meals' ? await categoryMealsFetch(param) : await categoryDrinksFetch(param);
     setRecipes(response);
   };
 
-  const handleFilterClick = (category) => {
-    if (category === selectedCategory) {
-      setSelectedCategory('');
-      clearFilters();
+  const filterResultAPI = (param) => {
+    if (!toggleCategory || toggleCategory !== param) {
+      filterByCategory(param);
     } else {
-      setSelectedCategory(category);
-      filterByCategory(category);
+      setToggleCategory(false);
+      clearAllFilters();
     }
   };
 
@@ -58,18 +54,19 @@ export default function Filters({ title }) {
     <div className="containerFilters">
       <button
         className="buttonFilters"
-        data-testid="All-category-filter"
-        onClick={clearFilters}
+        onClick={() => {
+          setToggleCategory(false);
+          clearAllFilters();
+        }}
       >
         All
       </button>
 
       {fetchCategories.map((category) => (
         <button
-          className={`buttonFilters ${category.strCategory === selectedCategory ? 'selected' : ''}`}
+          className="buttonFilters"
           key={category.strCategory}
-          data-testid={`${category.strCategory}-category-filter`}
-          onClick={() => handleFilterClick(category.strCategory)}
+          onClick={() => filterResultAPI(category.strCategory)}
         >
           {category.strCategory}
         </button>
@@ -81,3 +78,5 @@ export default function Filters({ title }) {
 Filters.propTypes = {
   title: PropTypes.string.isRequired,
 };
+
+export default Filters;

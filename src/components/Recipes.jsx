@@ -3,9 +3,9 @@ import CardRecipe from './CardRecipe';
 
 function Recipes() {
   return (
-    <main>
+    <div>
       <CardRecipe />
-    </main>
+    </div>
   );
 }
 

@@ -1,7 +1,8 @@
 import React, { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
-import { idDrinkFetch, idMealFetch } from '../services/fetchAPI';
+import { idMealFetch, idDrinkFetch } from '../services/fetchAPI';
 import CardDetails from '../components/CardDetails';
+import Recomendation from '../components/Recomendation';
 import RecipesContext from '../context/RecipesContext';
 import { createObjectDetails } from '../helpers/createObjectDetails';
 import { objectRecipeId } from '../helpers/returnAPI';
@@ -19,22 +20,34 @@ function RecipeDetails({ match }) {
   }, {});
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = path === '/meals/:id' ? await idMealFetch(id) : await idDrinkFetch(id);
-      const objectApi = response && response[path.split('/')[1] + 's'] && response[path.split('/')[1] + 's'][0];
-      if (objectApi) {
-        setDataDetails(createObjectDetails(objectApi, path === '/meals/:id'));
-        const ingredients = filterKeys(objectApi, /strIngredient\d+/);
-        const measures = filterKeys(objectApi, /strMeasure\d+/);
+    const PARAM_INGREDIENT = /strIngredient\d+/;
+    const PARAM_MEASURE = /strMeasure\d+/;
+    const idFetchs = async () => {
+      if (path === '/meals/:id') {
+        const response = await idMealFetch(id);
+        const objectApi = response.meals[0];
+        setDataDetails(createObjectDetails(objectApi, true));
+        const ingredients = filterKeys(objectApi, PARAM_INGREDIENT);
+        const measures = filterKeys(objectApi, PARAM_MEASURE);
+        setRecipeId(objectRecipeId(objectApi, path, ingredients, measures));
+      } else if (path === '/drinks/:id') {
+        const response = await idDrinkFetch(id);
+        const objectApi = response.drinks[0];
+        setDataDetails(createObjectDetails(objectApi, false));
+        const ingredients = filterKeys(objectApi, PARAM_INGREDIENT);
+        const measures = filterKeys(objectApi, PARAM_MEASURE);
         setRecipeId(objectRecipeId(objectApi, path, ingredients, measures));
       }
     };
-    fetchData();
-  }, []);
+    idFetchs();
+  }, [id, path, setDataDetails, setRecipeId]);
   
 
   return (
-    <h1>< CardDetails params={ recipeId } /> </h1>
+    <main>
+      < CardDetails params={ recipeId } />
+      < Recomendation path={ path } />
+    </main>
   );
 }
 

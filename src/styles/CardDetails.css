@@ -1,0 +1,160 @@
+* {
+  background-color: white;
+}
+.details {
+  max-width: 800px;
+  max-height: 2000px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.info {
+  align-items: center;
+  border: 2px solid gray;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.details h1 {
+  font-size: 32px;
+  margin: 16px 0;
+  text-align: center;
+}
+
+.details img {
+  padding-bottom: 5px;
+  margin: 2px;
+  width: 250px;
+  height: auto;
+}
+
+.details .container-icons {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 16px 0;
+  background-color: rgba(128, 128, 128, 0.169);
+}
+
+.details .icons {
+  width: 35px;
+  height: 35px;
+}
+
+.details .recipeCategory {
+  font-size: 2rem;
+  margin: 16px 0;
+  text-align: center;
+}
+
+.details .titleCardDetails {
+  font-size: 24px;
+  margin: 16px 0;
+  background-color: rgba(128, 128, 128, 0.169);
+}
+
+.details ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.details li {
+  font-size: 16px;
+  margin: 8px 0;
+}
+
+.details li:hover {
+  background-color: #8ea898;
+  cursor: crosshair;
+}
+
+.details .instructions {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 16px 0;
+  background-color: rgba(128, 128, 128, 0.226);
+  border-radius: 5px;
+  padding: 10px
+}
+
+.button-start {
+  background-color: #2D7A4C;
+  color: #fff;
+  display: block;
+  font-size: 16px;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 10px auto;
+}
+
+.iframe {
+  border-radius: 5px;
+}
+
+.container-video {
+  align-items: center;
+  position: relative;
+  text-align: center;
+}
+@media only screen and (max-width: 768px) {
+  .details h1 {
+    font-size: 24px;
+  }
+
+  .details .icons {
+    width: 24px;
+    height: 24px;
+  }
+
+  .details .recipeCategory {
+    font-size: 14px;
+  }
+
+  .details .titleCardDetails {
+    font-size: 20px;
+  }
+
+  .details li {
+    font-size: 14px;
+  }
+
+  .details .instructions {
+    font-size: 14px;
+  }
+
+  .details .buttonStartRecipe {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .details h1 {
+    font-size: 20px;
+  }
+
+  .details .recipeCategory {
+    font-size: 12px;
+  }
+
+  .details .titleCardDetails {
+    font-size: 16px;
+  }
+
+  .details li {
+    font-size: 12px;
+  }
+
+  .details .instructions {
+    font-size: 12px;
+  }
+
+  .details .buttonStartRecipe {
+    font-size: 12px;
+    padding: 8px 16px;
+  }
+}

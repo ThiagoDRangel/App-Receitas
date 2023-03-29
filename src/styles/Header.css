@@ -31,19 +31,80 @@
 .container-inputs {
   display: flex;
   gap: 9px;
+  
 }
 
 .input-profile,
 .input-search {
-  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: transparent;
   border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  color: #333;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  outline: none;
+  cursor: pointer;
   transition: all 0.3s ease;
 }
+
+.input-profile svg,
+.input-search svg {
+  width: 20px;
+  height: 20px;
+  fill: #333;
+}
+
+.input-profile:hover,
+.input-search:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.input-profile:active,
+.input-search:active {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.input-search {
+  margin-left: 10px;
+  position: relative;
+}
+
+.input-search svg {
+  width: 18px;
+  height: 18px;
+  fill: #333;
+}
+
+.search-input {
+  position: absolute;
+  top: 36px;
+  left: 0;
+  width: 100%;
+  max-width: 320px;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.search-input input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: #333;
+  background-color: #f2f2f2;
+}
+
+.search-input input:focus {
+  background-color: #fff;
+}
+
 
 .input-profile:focus,
 .input-search:focus {

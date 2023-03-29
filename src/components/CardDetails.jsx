@@ -35,9 +35,10 @@ function CardDetails(recipeId) {
 
   useEffect(() => {
     const inProgress = getLocalStorage('inProgressRecipes');
-    const embedLink = video.replace('watch?v=', 'embed/');
-    setYou(embedLink);
-  
+    if(video) {
+      const embedLink = video.replace('watch?v=', 'embed/');
+      setYou(embedLink);
+    }
     if (!inProgress) {
       return;
     }

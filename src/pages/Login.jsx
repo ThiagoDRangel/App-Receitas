@@ -35,13 +35,12 @@ function Login() {
   return (
     <main className="login">
       <section className="main-content">
-        <h1> Em <span>Construção...</span></h1>
         <img
           alt="logo do app"
           className="logoImage"
           src={ logo }
         />
-        <h1>Login</h1>
+        <h1>App Receitas</h1>
         <input
           autoComplete="off"
           className="input-login"

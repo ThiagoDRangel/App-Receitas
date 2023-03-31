@@ -4,17 +4,9 @@ main {
   align-items: center;
   padding: 20px;
   margin-top: 40px;
-  height: 800px
 }
 
-.done-buttons {
-  display: flex;
-  flex-direction: column;
-  margin: 2px;
-  justify-content: center;
-}
-
-.button-filter {
+button {
   padding: 10px 20px;
   margin: 2px 10px;
   border: none;
@@ -29,18 +21,31 @@ main {
   width: 220px;
 }
 
-.button-filter:hover,
-.button-filter:focus {
+.share-button {
+  display: flex;
+  background-color: blue;
+}
+
+button:hover,
+button:focus {
   background-color: #ccc;
 }
 
-.button-filter:active {
+button:active {
   transform: translateY(1px);
 }
 
-@media (max-width: 768px) {
+.icons {
+  margin-left: 45%;
+  margin-top: 1%;
+  width: 30px;
+  height: 35px;
+  fill: #333;
+  transition: all 0.2s ease-in-out;
+}
 
-  .button-filter {
+@media (max-width: 768px) {
+  button {
     padding: 8px 16px;
     margin: 5px 5px;
     font-size: 14px;

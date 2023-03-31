@@ -45,19 +45,25 @@ function CardDoneRecipes(recipes) {
             className="card-recipes-img"
             src={ image }
           />
-          {nationality !== '' ? (
-            <p>{`${nationality} - ${category}`}</p>
-          ) : (
-            <p>{category}</p>
-          )}
-          {alcoholicOrNot !== '' && (
-            <p>{alcoholicOrNot}</p>
-          )}
+          <h3 className="natiOrCat">
+            {nationality !== '' ? (
+              <p>{`${nationality} - ${category}`}</p>
+            ) : (
+              <p>{category}</p>
+            )}
+          </h3>
+          <p>
+            {alcoholicOrNot !== '' && (
+              <p>{alcoholicOrNot}</p>
+            )}
+          </p>
           <p>{name}</p>
           <p>{doneDate}</p>
-          {tags?.map((tag) => (
-            <p key={ index }>{tag}</p>
-          ))}
+          <p>
+            {tags?.map((tag) => (
+              <p key={ index }>{tag}</p>
+            ))}
+          </p>
           <button
             className="format-btn"
             onClick={ () => onClickShare(type, id) }
@@ -68,7 +74,7 @@ function CardDoneRecipes(recipes) {
               src={ shareIcon}
             />
           </button>
-          {urlCopied && <p>Link copied!</p>}
+          <p>{urlCopied && <p>Link copied!</p>}</p>
         </section>
       ))}
     </main>

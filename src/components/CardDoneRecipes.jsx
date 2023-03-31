@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import copy from 'clipboard-copy';
 import shareIcon from '../images/shareIcon.svg';
-// import '../styles/DoneRecipes.css';
+import '../styles/CardDoneRecipes.css';
 
 function CardDoneRecipes(recipes) {
   const [urlCopied, setUrlCopied] = useState(false);
@@ -58,7 +58,10 @@ function CardDoneRecipes(recipes) {
           {tags?.map((tag) => (
             <p key={ index }>{tag}</p>
           ))}
-          <button onClick={ () => onClickShare(type, id) }>
+          <button
+            className="format-btn"
+            onClick={ () => onClickShare(type, id) }
+          >
             <img
               alt="Share Icon"
               className="icons"

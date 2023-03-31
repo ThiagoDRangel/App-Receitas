@@ -93,6 +93,11 @@
     height: 50px;
     width: 50px;
   }
+
+  label.checked span {
+    text-decoration: line-through;
+    text-decoration-color: black;
+  }
 }
 
 /* Estilos para telas maiores que 768px (exemplo: desktops) */
@@ -195,4 +200,10 @@
     height: 80px;
     width: 80px;
   }
+
+  label.checked span {
+    text-decoration: line-through;
+    text-decoration-color: black;
+  }
+  
 }

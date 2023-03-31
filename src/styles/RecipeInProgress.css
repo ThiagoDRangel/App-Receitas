@@ -1,0 +1,198 @@
+/* Estilos para telas menores que 768px (exemplo: smartphones) */
+@media screen and (max-width: 768px) {
+  body {
+    height: 100vh;
+  }
+
+  .recipe-progress {
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .card-recipe {
+    align-items: center;
+    border: 1px solid rgba(98, 95, 91, 0.484);
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(200, 104, 20, 0.1);
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+  }
+
+  h1 {
+    font-size: 22px;
+    margin-bottom: 5px;
+    margin-top: 0;
+    text-align: center;
+  }
+
+  .name-recipe {
+    font-size: 1.6rem;
+  }
+  img.selected-recipe {
+    border-radius: 10px;
+    width: 300px;
+    margin-bottom: 20px;
+  }
+
+  .ingredients-input {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1px;
+    margin-top: 5px;
+  }
+
+  .ingredients-input label {
+    align-items: center;
+    display: flex;
+    width: 100%;
+    margin: 0;
+  }
+
+  .ingredients-input span {
+    font-size: 14px;
+    margin-left: 16px;
+  }
+
+  .finish-btn {
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(128, 128, 128, 0.124);
+    width: 100%;
+    max-width: 220px;
+  }
+
+  .icons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+  }
+
+  .icons img {
+    width: 25px;
+  }
+
+  .instructions {
+    margin: 0;
+    font-size: 12px;
+  }
+
+  .recipe-progress p {
+    font-size: 20px;
+  }
+
+  .social-btn {
+    border: none;
+    border-radius: 50%;
+    margin: 0 2px;
+    height: 50px;
+    width: 50px;
+  }
+}
+
+/* Estilos para telas maiores que 768px (exemplo: desktops) */
+@media screen and (min-width: 768px) {
+
+  .recipe-progress {
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .card-recipe {
+    align-items: center;
+    border: 1px solid rgba(98, 95, 91, 0.484);
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(200, 104, 20, 0.1);
+    display: flex;
+    padding: 18px;
+    flex-direction: column;
+  }
+
+  .recipe-progress > * {
+    max-width: 600px;
+  }
+
+  h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .name-recipe {
+    font-size: 2rem;
+  }
+  img.selected-recipe {
+    border-radius: 10px;
+    width: 300px;
+    margin-bottom: 32px;
+  }
+
+  .ingredients-input {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 16px;
+  }
+
+  .ingredients-input label {
+    display: inline-flex;
+    align-items: center;
+    width: 220px;
+    margin: 0;
+  }
+
+  .ingredients-input span {
+    font-size: 16px;
+    margin-left: 16px;
+  }
+
+  .finish-btn {
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(128, 128, 128, 0.124);
+    width: 100%;
+    max-width: 220px;
+    margin-top: 15px;
+  }
+
+  .icons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 32px;
+  }
+
+  .icons span {
+    font-size: 24px;
+  }
+
+  .icons img {
+    width: 30px;
+  }
+
+  .instructions {
+    font-size: 12px;
+  }
+
+  .recipe-progress p {
+    font-size: 20px;
+  }
+
+  .social-btn {
+    border: none;
+    border-radius: 50%;
+    padding: 5px;
+    margin: 0 5px;
+    height: 80px;
+    width: 80px;
+  }
+}

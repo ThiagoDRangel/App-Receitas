@@ -7,6 +7,7 @@ import Drinks from './pages/Drinks';
 import Profile from './pages/Profile';
 import RecipeDetails from './pages/RecipeDetails';
 import RecipeInProgress from './pages/RecipeInProgress';
+import DoneRecipes from './pages/DoneRecipes';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           path="/drinks/:id/in-progress"
           render={ (props) => <RecipeInProgress { ...props } /> }
         />
+        <Route exact path="/done-recipes" component={ DoneRecipes } />
       </RecipesProvider>
     </Switch>
   );

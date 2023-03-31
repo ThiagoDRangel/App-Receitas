@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import copy from 'clipboard-copy';
 import Header from '../components/Header';
 import shareIcon from '../images/shareIcon.svg';
+import '../styles/FavoriteRecipes.css';
 
 function FavoriteRecipes() {
   const [urlCopied, setUrlCopied] = useState(false);
@@ -34,6 +35,7 @@ function FavoriteRecipes() {
         Drinks
       </button>
       <button
+        className="share-button"
         onClick={ () => onClickShare() }
       >
         <img

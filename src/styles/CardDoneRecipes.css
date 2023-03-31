@@ -1,95 +1,87 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
 .done-recipes {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
-  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .card-recipes {
-  position: relative;
   background-color: #fff;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
   padding: 20px;
+  text-align: center;
+}
+
+img {
   border-radius: 10px;
-  overflow: hidden;
 }
 
 .card-recipes-img {
-  display: block;
-  width: 100%;
-  height: 200px;
   object-fit: cover;
-  margin-bottom: 10px;
+  width: 300px;
 }
 
 .natiOrCat {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 5px;
-  font-size: 14px;
-  font-weight: 600;
-  color: #777;
-}
-
-.natiOrCat p {
+  background-color: #f1f1f1;
+  border-radius: 0.5rem;
+  display: inline-block;
   margin: 0;
-}
-
-.card-recipes p:not(.natiOrCat) {
-  margin: 5px 0;
-  font-size: 16px;
-  color: #333;
+  padding: 0.5rem;
+  text-align: center;
+  width: 100%;
 }
 
 .card-recipes button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: transparent;
+  background-color: #f1f1f1;
   border: none;
-  outline: none;
+  border-radius: 0.5rem;
   cursor: pointer;
+  padding: 0.5rem;
 }
 
-.format-btn .icons {
-  width: 20px;
-  height: 20px;
-  fill: #333;
-  transition: all 0.2s ease-in-out;
+.icon-share {
+  height: 1.1rem;
+  width: 1.5rem;
 }
 
-.format-btn:hover .icons {
-  fill: #555;
+@media screen and (min-width: 600px) {
+  .done-recipes {
+    padding: 1rem;
+  }
+
+  .card-recipes {
+    margin: 2rem;
+    max-width: 20rem;
+  }
+
+  .card-recipes-img {
+    height: 20rem;
+  }
+
+  .natiOrCat {
+    width: auto;
+  }
 }
 
-.card-recipes p:last-child {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-}
+@media screen and (min-width: 800px) {
+  .done-recipes {
+    justify-content: flex-start;
+  }
 
-.card-recipes p:last-child p {
-  margin: 5px 10px 5px 0;
-  padding: 5px 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 12px;
-  color: #777;
-}
+  .card-recipes {
+    max-width: 20rem;
+  }
 
-.card-recipes p:last-child p:last-child {
-  margin-right: 0;
-}
+  .card-recipes-img {
+    height: 16rem;
+  }
 
-.card-recipes p:last-child p:hover {
-  background-color: #eee;
-}
-
-.card-recipes p:last-child p:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px #333;
-}
-
-.card-recipes p:last-child p:active {
-  transform: translateY(1px);
+  .text {
+    text-align: left;
+  }
 }

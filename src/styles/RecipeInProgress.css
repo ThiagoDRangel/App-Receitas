@@ -122,7 +122,7 @@
   }
 
   .recipe-progress > * {
-    max-width: 600px;
+    max-width: 1200px;
   }
 
   h1 {
@@ -173,7 +173,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 32px;
+    margin-top: 50px;
+    margin-right: 50%;
   }
 
   .icons span {
@@ -195,10 +196,9 @@
   .social-btn {
     border: none;
     border-radius: 50%;
-    padding: 5px;
+    padding: 10px;
     margin: 0 5px;
-    height: 80px;
-    width: 80px;
+    width: 150px;
   }
 
   label.checked span {

@@ -65,16 +65,16 @@ function CardDoneRecipes(recipes) {
             ))}
           </p>
           <button
-            className="format-btn"
+            className="format-btn-recipes"
             onClick={ () => onClickShare(type, id) }
           >
             <img
               alt="Share Icon"
-              className="icons"
+              className="icon-share"
               src={ shareIcon}
             />
           </button>
-          <p>{urlCopied && <p>Link copied!</p>}</p>
+          <p className="text">{urlCopied && <p>Link copied!</p>}</p>
         </section>
       ))}
     </main>

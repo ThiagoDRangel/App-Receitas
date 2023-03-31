@@ -1,39 +1,55 @@
 .footer {
-  display: flex;
-  justify-content: center;
+  border-radius: 10px;
+  color: #fff;
   padding: 20px;
-}
-
-.footer input {
-  border: 1px solid gray;
-  margin: 0 10px;
-}
-
-.drinkIcon,
-.mealIcon {
-  width: 50px;
-  height: 50px;
+  background-color: #37ba37;
+  color: #fff;
   border: none;
-  background-color: transparent;
-  cursor: pointer;
+  padding: 10px 15px;
 }
 
 .container-footer {
-  background-color: white;
-  border-radius: 15px;
-  padding: 1%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-@media (max-width: 768px) {
+.drinkIcon, .mealIcon {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: #fff;
+  padding: 8px;
+  cursor: pointer;
+  margin: 2px;
+  transition: all 0.2s ease-in-out;
+}
+
+.drinkIcon:hover, .mealIcon:hover {
+  transform: scale(1.1);
+}
+
+@media screen and (max-width: 768px) {
   .footer {
-    flex-direction: column;
-    align-items: center;
+    background-color: #37ba37;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    padding-bottom: 0;
   }
 
-  .drinkIcon,
-  .mealIcon {
+  .drinkIcon, .mealIcon {
     width: 40px;
     height: 40px;
-    margin-bottom: 10px;
+    padding: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .drinkIcon, .mealIcon {
+    margin-bottom: 20px;
+    width: 50px;
   }
 }

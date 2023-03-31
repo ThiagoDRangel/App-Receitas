@@ -3,6 +3,7 @@ main {
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  margin-top: 40px;
 }
 
 .done-buttons {
@@ -24,6 +25,7 @@ main {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  width: 220px;
 }
 
 .button-filter:hover,
@@ -36,9 +38,10 @@ main {
 }
 
 @media (max-width: 768px) {
+
   .button-filter {
     padding: 8px 16px;
-    margin: 0 5px;
+    margin: 5px 5px;
     font-size: 14px;
   }
 }

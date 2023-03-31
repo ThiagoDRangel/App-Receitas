@@ -10,6 +10,7 @@ import { getLocalStorage, saveLocalStorage } from '../helpers/saveLocalStorage';
 import RecipesContext from '../context/RecipesContext';
 import { createObjectDetails } from '../helpers/createObjectDetails';
 import { objectDoneRecipe, objectInProgress } from '../helpers/objectReturnedFromAPI';
+import '../styles/RecipeInProgress.css';
 
 function RecipeInProgress() {
   const { dataDetails, setDataDetails } = useContext(RecipesContext);
@@ -96,26 +97,32 @@ function RecipeInProgress() {
     );
     history.push('/done-recipes');
   };
-  const { image, category, name, instructions, ingredients, measures } = recipeInProgress;
+  const { image, name, instructions, ingredients, measures } = recipeInProgress;
   return (
     
     <main className="recipe-progress">
-      <h1>Recipe in progress</h1>
-      <span>{name}</span>
-      <img
-        alt="Selected Recipe"
-        className="selected-recipe"
-        src={ image }
-      />
+      <section className="card-recipe">
+        <h1>Recipe in progress</h1>
+        <span className="name-recipe">{name}</span>
+        <img
+          alt="Selected Recipe"
+          className="selected-recipe"
+          src={ image }
+        />
+      </section>
        <section className="icons">
-        <button onClick={ () => onClickFavorite() }>
+        <button
+          className="social-btn"
+          onClick={ () => onClickFavorite() }>
           <img
             alt="Favorite Recipe"
             className="favorite-btn"
             src={ favorited }
           />
         </button>
-        <button onClick={ () => onCLickShare() }>
+        <button
+          className="social-btn"
+          onClick={ () => onCLickShare() }>
           <img
             alt="Share Recipe"
             className="share-btn"
@@ -125,7 +132,6 @@ function RecipeInProgress() {
         {urlCopied && <span>Link copied!</span>}
       </section>
       <section>
-        <p>{category}</p>
         <h2 className="instructions">
           <p><strong>Modo de preparo:</strong></p>
           {instructions}
